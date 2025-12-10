@@ -13,6 +13,8 @@ Automation Test using Playwright on saucedemo.com
 - User should be able to view inventory items (6 items).
 - User should be able to sort products by Price (low to high).
 - User should be able to sort products by Price (high to low).
+- User should be able to sort products A to Z
+- User should be able to sort products Z to A
 - User should be able to add first item to the shoppping cart.
 - User should be able to add multiple item to the shopping cart.
 - User should be able to view all inventory detail.
@@ -24,3 +26,4 @@ Automation Test using Playwright on saucedemo.com
 
 **4. CheckOut**
 - User should be able to do checkout multiple items.
+- User should Not be able to do checkout with no information added in page checkout-step-one.

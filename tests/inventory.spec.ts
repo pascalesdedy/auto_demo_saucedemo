@@ -41,6 +41,20 @@ test.describe('Inventory Page Tests', () => {
         const secondProductPrice = await inventoryPage.secondItemPrice.innerText();
         expect(parseFloat(secondProductPrice.replace('$',''))).toBeLessThanOrEqual(parseFloat(firstProductPrice.replace('$','')));
     });
+    test('User should be able to sort products A to Z', async ({page}) => {
+        await inventoryPage.productSortContainer.click();
+        await inventoryPage.productSortContainer.selectOption('az');
+        const names = await inventoryPage.inventoryItemName.allInnerTexts();
+        const sortedNames = [...names].sort((a,b) => a.localeCompare(b));
+        expect(names).toEqual(sortedNames);
+    });
+    test('User should be able to sort products Z to A', async ({page}) => {
+        await inventoryPage.productSortContainer.click();
+        await inventoryPage.productSortContainer.selectOption('za');
+        const names = await inventoryPage.inventoryItemName.allInnerTexts();
+        const sortedNames = [...names].sort((a,b) => b.localeCompare(a));
+        expect(names).toEqual(sortedNames);
+    });
     test('User should be able to add first item to the shoppping cart', async ({page}) => {
         await inventoryPage.addtoCartButtonFirstItem.click();
         await expect(inventoryPage.shoppingCartLink).toHaveText('1');

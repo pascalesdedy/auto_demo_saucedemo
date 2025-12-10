@@ -35,5 +35,20 @@ test.describe('Checkout Page Test', ()=> {
         await expect(checkoutPage.thankyouHeading).toContainText('Thank you for your order!');
         expect(checkoutPage.backHomeButton).toBeVisible;
     });
+    test('User should Not be able to do checkout with no information added in page checkout-step-one', async ({page}) =>{
+        // add items to chart
+        await page.goto('/inventory.html');
+        await inventoryPage.addtoCartButtonFirstItem.click();
+        await inventoryPage.addtoCartButtonSecondItem.click();
+        await inventoryPage.shoppingCartLink.click();
+        await expect(page).toHaveURL('/cart.html')
+        // continue to checkout step one - no information added
+        await cartPage.checkOutButton.click();
+        await expect(page).toHaveURL('/checkout-step-one.html');
+        await checkoutPage.continueButton.click();
+        expect(checkoutPage.errorFirstNameRequired).toBeVisible;
+        // continue to checkout step two
+
+    });
 })
 

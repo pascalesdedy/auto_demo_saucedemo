@@ -11,6 +11,8 @@ export class CheckoutPage extends BasePage {
     public finishButton: Locator;
     public thankyouHeading: Locator;
     public backHomeButton: Locator;
+    public errorFirstNameRequired: Locator;
+    public errorLastNameRequired: Locator;
 
     constructor (page: Page) {
         super(page);
@@ -21,6 +23,8 @@ export class CheckoutPage extends BasePage {
         this.zipInput = page.getByTestId('postalCode');
         this.cancelButton = page.getByTestId('cancel');
         this.continueButton = page.getByTestId('continue');
+        this.errorFirstNameRequired = page.getByTestId('error').getByText('First Name is required');
+        this.errorLastNameRequired = page.getByTestId('error').getByText('Last Name is required')
         // locators for checkout-step-two.html
         this.finishButton = page.getByTestId('finish');
         // locator for checkout-complete.html
