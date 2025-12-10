@@ -18,7 +18,7 @@ test.describe('Cart Page Testing', () =>{
         await expect(cartPage.checkOutButton).toBeVisible();
         await expect(cartPage.continueShopping).toBeVisible();
     });
-    test('User should be able to add Multiple Items to cart and view the cart page', async ({page})=> {
+    test('User should be able to add Multiple Items to cart and view the items in the cart.', async ({page})=> {
         await page.goto('/inventory.html');
         await inventoryPage.addtoCartButtonFirstItem.click();
         await inventoryPage.addtoCartButtonSecondItem.click();

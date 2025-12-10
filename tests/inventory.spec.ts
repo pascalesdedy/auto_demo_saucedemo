@@ -23,7 +23,7 @@ test.describe('Inventory Page Tests', () => {
         await expect(inventoryPage.socialFacebookLink).toBeVisible();
         await expect(inventoryPage.socialLinkedInLink).toBeVisible();
     });
-    test('User should be able to view 6 inventory items', async ({page}) => {
+    test('User should be able to view inventory items (6 items).', async ({page}) => {
         const inventoryItemsCount = await inventoryPage.inventoryItem.count();
         expect(inventoryItemsCount).toEqual(6);
     });
@@ -34,7 +34,7 @@ test.describe('Inventory Page Tests', () => {
         const secondProductPrice = await inventoryPage.secondItemPrice.innerText();
         expect(parseFloat(firstProductPrice.replace('$',''))).toBeLessThanOrEqual(parseFloat(secondProductPrice.replace('$','')));
     });
-        test('User should be able to sort products by Price (high to low)', async ({page}) => {
+    test('User should be able to sort products by Price (high to low)', async ({page}) => {
         await inventoryPage.productSortContainer.click();
         await inventoryPage.productSortContainer.selectOption('hilo');
         const firstProductPrice = await inventoryPage.firstItemPrice.innerText();
